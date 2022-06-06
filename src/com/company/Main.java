@@ -1,17 +1,24 @@
 package com.company;
 
+import com.company.stuff.BaseVehicle;
+import com.company.stuff.TallVehicle;
 import com.company.stuff.Thing;
-import com.company.stuff.engines.CombustionEngine;
-import com.company.stuff.engines.ElectricEngine;
-import com.company.stuff.engines.Engine;
-import com.company.stuff.engines.Legs;
+import com.company.stuff.engines.*;
+import com.company.stuff.interfaces.Air;
+import com.company.stuff.interfaces.Ground;
+import com.company.stuff.interfaces.Water;
 import com.company.things.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 import static com.company.stuff.Color.*;
 
 public class Main {
 
     public static void main(String[] args) {
+        //ZAD2
         Sedan sedan1 = new Sedan(RED, "typical sedan", new CombustionEngine(40, 80), 1000);
         Sedan sedan2 = new Sedan(RED, "typical sedan 2", new CombustionEngine(40, 80), 1000);
 
@@ -53,8 +60,75 @@ public class Main {
         ElectricEngine electricEngine2 = new ElectricEngine(100);
         Legs legs2 = new Legs(10000);
 
-        Thing[] tab = {sedan1,sedan2,bus1,bus2,tram1,tram2,deliveryVan1,deliveryVan2,floatPlane1,floatPlane2,jetFighter1,jetFighter2,bulldozer1,bulldozer2,motorbike1,motorbike2,bicycle1,bicycle2,helicopter1,helicopter2,carAmphibious1,carAmphibious2,combustionEngine1,combustionEngine2,legs1,legs2,electricEngine1,electricEngine2};
-        Engine[] tab2 = {combustionEngine1,combustionEngine2,electricEngine1,electricEngine2,legs1,legs2};
+        //ZAD3
 
+        Thing[] tab1 = {sedan1,sedan2,bus1,bus2,tram1,tram2,deliveryVan1,deliveryVan2,floatPlane1,floatPlane2,jetFighter1,jetFighter2,bulldozer1,bulldozer2,motorbike1,motorbike2,bicycle1,bicycle2,helicopter1,helicopter2,carAmphibious1,carAmphibious2,combustionEngine1,combustionEngine2,legs1,legs2,electricEngine1,electricEngine2};
+        BaseVehicle[] tab2 = {sedan1,sedan2,bus1,bus2,tram1,tram2,deliveryVan1,deliveryVan2,floatPlane1,floatPlane2,jetFighter1,jetFighter2,bulldozer1,bulldozer2,motorbike1,motorbike2,bicycle1,bicycle2,helicopter1,helicopter2,carAmphibious1,carAmphibious2};
+        Ground[] tab3 = {sedan1,sedan2,bus1,bus2,tram1,tram2,deliveryVan1,deliveryVan2,jetFighter1,jetFighter2,bulldozer1,bulldozer2,motorbike1,motorbike2,bicycle1,bicycle2,carAmphibious1,carAmphibious2};
+        Air[] tab4 = {floatPlane1,floatPlane2,jetFighter1,jetFighter2,helicopter1,helicopter2};
+        Water[] tab5 = {floatPlane1,floatPlane2,carAmphibious1,carAmphibious2};
+        BaseVehicle[] tab6 = {sedan1,sedan2,bus1,bus2,deliveryVan1,deliveryVan2,floatPlane1,floatPlane2,jetFighter1,jetFighter2,bulldozer1,bulldozer2,motorbike1,motorbike2,helicopter1,helicopter2,carAmphibious1,carAmphibious2};
+        Bulldozer[] tab7 = {bulldozer1,bulldozer2};
+
+        //ZAD4
+
+        for(Thing t : tab1){
+            t.buy("2499 dollurs");
+            t.printPatentsClassName();
+            if(BaseVehicle.class.isAssignableFrom(t.getClass())){
+                ((BaseVehicle) t).printVehicleName();
+            }
+            else{
+                System.out.println("This isn't a vehicle!");
+            }
+            t.sell("5000 vbucks");
+        }
+
+        for(BaseVehicle b : tab2){
+            b.buy("1000 koron");
+            if(ActualEngine.class.isAssignableFrom(b.getEngine().getClass())){
+                ((ActualEngine) b.getEngine()).start();
+            }
+            else{
+                System.out.println("Engine cannot be started!");
+            }
+        }
+
+        for(Ground g : tab3){
+            ((BaseVehicle) g).buy("??? ??");
+            g.drive();
+        }
+
+        //ZAD5
+        int i;
+
+        i = 0;
+        while(i<tab4.length){
+            ((BaseVehicle) tab4[i]).buy("<insert price>");
+            tab4[i].fly(400,300);
+            tab4[i].land();
+            i++;
+        }
+
+        i = 0;
+        while(i<tab5.length){
+            ((BaseVehicle) tab5[i]).buy("<insert price>");
+            tab5[i].swim();
+            i++;
+        }
+
+        i = 0;
+        while(i<tab6.length){
+            tab6[i].buy("<insert price>");
+            ((CombustionEngine) tab6[i].getEngine()).tank(200);
+            i++;
+        }
+
+        i = 0;
+        while(i<tab7.length){
+            tab7[i].buy("<insert price>");
+            tab7[i].work();
+            i++;
+        }
     }
 }

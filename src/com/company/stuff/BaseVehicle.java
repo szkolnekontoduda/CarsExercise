@@ -1,14 +1,19 @@
 package com.company.stuff;
 
+import com.company.stuff.engines.CombustionEngine;
 import com.company.stuff.engines.Engine;
 
+import static com.company.stuff.Color.RED;
+
+//dziedziczenie klasy
 public class BaseVehicle extends Thing{
     private String vehicleName;
-    public final Color color;
-    public final Engine engine;
+    private Color color;
+    private Engine engine;
     private int maxSpeed;
 
-
+    public BaseVehicle(){}
+    //statyczny polimorfizm
     public BaseVehicle(Color color, String vehicleName, Engine engine, int price){
         super(price);
         this.color = color;
@@ -16,6 +21,7 @@ public class BaseVehicle extends Thing{
         this.engine = engine;
     }
 
+    //enkapsulacja
     public String printVehicleName(){
         return this.vehicleName;
     }
@@ -31,5 +37,25 @@ public class BaseVehicle extends Thing{
 
     public void setVehicleName(String vehicleName){
         this.vehicleName = vehicleName;
+    }
+
+    public String getVehicleName() {
+        return vehicleName;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
     }
 }

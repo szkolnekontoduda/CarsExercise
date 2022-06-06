@@ -3,8 +3,11 @@ package com.company.stuff;
 public class Thing {
     private int price;
 
+    public Thing(){}
+    //statyczny polimorfizm
     public Thing(int price){}
 
+    //enkapsulacja
     public int getPrice() {
         return price;
     }

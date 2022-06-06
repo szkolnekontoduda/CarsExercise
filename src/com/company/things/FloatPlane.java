@@ -7,24 +7,26 @@ import com.company.stuff.interfaces.Air;
 import com.company.stuff.interfaces.Ground;
 import com.company.stuff.interfaces.Water;
 
-public class FloatPlane extends TallVehicle implements Air, Water {
-
-
+//dziedziczenie klasy i implementacja interfejsu i implementacja interfejsu
+public class FloatPlane extends TallVehicle implements Water, Air {
+    public FloatPlane(){}
+    //statyczny polimorfizm
     public FloatPlane(Color color, String vehicleName, CombustionEngine engine, int maxHeight, int price) {
         super(color, vehicleName, engine, maxHeight, price);
     }
 
-    @Override
+    @Override //dynamiczny polimorfizm
     public void fly(int speed, int height) {
+        if(height <= getMaxHeight() && speed <=getMaxSpeed())
         System.out.println("flying at "+speed+"km/h and at "+height+"meters");
     }
 
-    @Override
+    @Override //dynamiczny polimorfizm
     public void land() {
-        System.out.println("Landing in water");
+        System.out.println("Landing");
     }
 
-    @Override
+    @Override //dynamiczny polimorfizm
     public void swim() {
         System.out.println(this.printVehicleName()+" swims (but how?)");
     }

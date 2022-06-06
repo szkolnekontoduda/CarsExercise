@@ -2,26 +2,35 @@ package com.company.stuff.engines;
 
 import com.company.stuff.Thing;
 
+//dziedziczenie klasy i implementacja interfejsu
 public class CombustionEngine extends Thing implements ActualEngine{
-    public final int maxCapacity;
+    private int maxCapacity;
     private int capacity;
 
+    public CombustionEngine(){}
+    //statyczny polimorfizm
     public CombustionEngine(int maxCapacity, int price){
         super(price);
 
         this.maxCapacity = maxCapacity;
     }
 
-    @Override
-    public void launch() {
+    @Override //dynamiczny polimorfizm
+    public void start() {
         System.out.println("Wr wrrrrrr...");
     }
 
-    @Override
+    @Override //dynamiczny polimorfizm
     public void stop() {
         System.out.println("rrw Rw.");
     }
 
+    @Override //dynamiczny polimorfizm
+    public void sound() {
+        System.out.println("Wr Wr Wr");
+    }
+
+    //enkapsulacja
     public int getCapacity() {
         return capacity;
     }
@@ -32,15 +41,15 @@ public class CombustionEngine extends Thing implements ActualEngine{
     }
 
     public void tank(int fuel){
-        if(fuel < 0) return;
-        if(fuel > maxCapacity)
-            this.setCapacity(this.maxCapacity);
-        else
-            this.setCapacity(this.getCapacity()+fuel);
+        if(fuel < 0)           return;
+        if(fuel > maxCapacity) this.setCapacity(this.maxCapacity);
+        else                   this.setCapacity(this.getCapacity()+fuel);
+    }
+    public int getMaxCapacity() {
+        return maxCapacity;
     }
 
-    @Override
-    public void sound() {
-        System.out.println("Wr Wr Wr");
+    public void setMaxCapacity(int maxCapacity) {
+        this.maxCapacity = maxCapacity;
     }
 }
