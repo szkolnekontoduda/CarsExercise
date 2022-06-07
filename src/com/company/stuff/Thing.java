@@ -1,13 +1,14 @@
 package com.company.stuff;
 
 public class Thing {
+    //enkapsulacja
     private int price;
 
     public Thing(){}
     //statyczny polimorfizm
     public Thing(int price){}
 
-    //enkapsulacja
+    //gettery i settery
     public int getPrice() {
         return price;
     }

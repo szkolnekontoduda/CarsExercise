@@ -4,6 +4,7 @@ import com.company.stuff.Thing;
 
 //dziedziczenie klasy i implementacja interfejsu
 public class CombustionEngine extends Thing implements ActualEngine{
+    //enkapsulacja
     private int maxCapacity;
     private int capacity;
 
@@ -30,7 +31,7 @@ public class CombustionEngine extends Thing implements ActualEngine{
         System.out.println("Wr Wr Wr");
     }
 
-    //enkapsulacja
+    //gettery i settery
     public int getCapacity() {
         return capacity;
     }

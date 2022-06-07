@@ -4,6 +4,7 @@ import com.company.stuff.engines.ActualEngine;
 
 //dziedziczenie klasy
 public class TallVehicle extends BaseVehicle{
+    //enkapsulacja
     private int maxHeight;
 
     public TallVehicle(){}
@@ -13,7 +14,7 @@ public class TallVehicle extends BaseVehicle{
         this.maxHeight = maxHeight;
     }
 
-    //enkapsulacja
+    //gettery i settery
     public int getMaxHeight() {
         return maxHeight;
     }

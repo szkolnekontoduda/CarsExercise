@@ -7,6 +7,7 @@ import static com.company.stuff.Color.RED;
 
 //dziedziczenie klasy
 public class BaseVehicle extends Thing{
+    //enkapsulacja
     private String vehicleName;
     private Color color;
     private Engine engine;
@@ -21,7 +22,7 @@ public class BaseVehicle extends Thing{
         this.engine = engine;
     }
 
-    //enkapsulacja
+    //gettery i settery
     public String printVehicleName(){
         return this.vehicleName;
     }
